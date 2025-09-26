@@ -1,5 +1,13 @@
 /*Se incluyen al inicio las nuevas adiciones al CSS*/
 
+.pizza-sola {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: black;
+}
+
 .cart {
   text-align: center;
   display: flex;

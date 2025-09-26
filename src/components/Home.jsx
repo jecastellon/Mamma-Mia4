@@ -1,16 +1,28 @@
 import CardPizza from "./CardPizza";
 import Header from "./Header";
-import { useState } from "react";
-import { pizzas } from "../utils/pizzas"
+import { useState, useEffect } from "react";
+// import { pizzas } from "../utils/pizzas"
 
 
 export default function Home() {
-  const [newPizza, setNewPizza] = useState(pizzas);
+  const [Pizza, setPizza] = useState([]);
+  
+  useEffect(()=>{
+    buscarPizza()
+  }, [])
+  
+  const buscarPizza = async () => {
+    const url = "http://localhost:5000/api/pizzas"
+    const response = await fetch(url)
+    const data = await response.json()
+    setPizza(data)
+  }
+
   return (
     <>
     <Header/>
       <div className="pizzas-grid">
-        {newPizza.map((p) => (
+        {Pizza.map((p) => (
           <CardPizza
           key= {p.id}
           desc= {p.desc}
